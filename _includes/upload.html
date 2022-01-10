@@ -1,0 +1,11 @@
+
+<body>
+    <label for="video">Video File</label>
+    <input type="file" name="video" id="video" accept="video/mp4" allow="cross-origin-isolated" onchange="get_video_source_from_input(this)">
+    <br><br>
+    <label for="subtitle">Subtitle File</label>
+    <input type="file" name="subtile" id="subtitle" accept=".srt,.vtt" allow="cross-origin-isolated" onchange="get_sub(this)">
+    <!-- <video id="vid" controls preload="auto" width="640" height="264" crossorigin="anonymous" allow="cross-origin-isolated" type="video/mp4"> -->
+    <script src="../src/ffmpeg.min.js" crossorigin></script>
+    <script src="../src/App.js" crossorigin></script>
+</body>

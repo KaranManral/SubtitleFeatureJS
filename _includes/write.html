@@ -1,0 +1,34 @@
+<head>
+
+</head>
+<body>
+    <div style="display: flex;flex-direction: row;">
+        <div>
+            <label for="video">Video File</label>
+            <input type="file" name="video" id="video" accept="video/mp4" allow="cross-origin-isolated" onchange="getVideo(this)">
+            <br><br>
+            <!-- <label for="subtitle">Subtitle File</label>
+            <input type="file" name="subtile" id="subtitle" accept=".srt,.vtt" allow="cross-origin-isolated" onchange="get_sub(this)"> -->
+            <video id="vid" controls preload="auto" width="640" height="264" crossorigin="anonymous" allow="cross-origin-isolated" type="video/mp4"></video> 
+        </div>
+        
+        <div style="margin-left: 20px;">
+            <input type="button" value="Add Row" onclick="addRow()">
+            <input type="button" value="Delete Last Row" onclick="deleteLast()">
+            <table id="cue-table" border="1">
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Text</th>
+                </tr>
+            </table>
+            <input type="button" value="Export SRT File" onclick="exportSRT()">
+            <input type="button" value="Upload Subtitle to video" onclick="uploadSRT()">
+        </div>
+    </div>
+    <script src="../src/ffmpeg.min.js" crossorigin></script>
+    <script src="../src/write.js" crossorigin></script>
+
+    <!-- <script src="../src/App.js" crossorigin></script> --> 
+</body>
