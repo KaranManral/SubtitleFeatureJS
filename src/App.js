@@ -60,7 +60,7 @@ const addSub = async (option)=>{
     'infile.'+type,
     new Uint8Array(sourceBuffer1, 0, sourceBuffer1.byteLength)
   )
-  let SubtitleCommand = `-i inputTrim.mp4 -i infile.`+type+` -c:v copy -map 0 -c copy -c:s mov_text Output.mp4`;
+  let SubtitleCommand = `-i inputTrim.mp4 -c:v copy -map 0 -i infile.`+type+` -c copy -c:s mov_text Output.mp4`;
   let ArrayofInstructions = SubtitleCommand.split(' ');
   await ffmpeg.run(...ArrayofInstructions);
 }
