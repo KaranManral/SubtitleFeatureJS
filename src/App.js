@@ -31,7 +31,7 @@ const get_video_source_from_input = async (input) => {
 
 const get_sub = async (input) => {
   let VideoSourceFile = input.files[0];
-  if(VideoSourceFile.length>0)
+  if(input.files.length>0)
   {
     let tempType=(VideoSourceFile.name).split('.');
     type=tempType[tempType.length-1];
@@ -60,7 +60,8 @@ const addSub = async (option)=>{
     'infile.'+type,
     new Uint8Array(sourceBuffer1, 0, sourceBuffer1.byteLength)
   )
-  let SubtitleCommand = `-i inputTrim.mp4 -i infile.`+type+` -c copy -c:s mov_text Output.mp4`;
+  // ffmpeg -i %1 -i subs_nl.srt -map 0 -map 1 -vcodec copy -acodec copy -c:s:0 copy -c:s:1 subrip -metadata:s:s:1 language=Dutch "%~n1"_nl.mkv
+  let SubtitleCommand = `-i inputTrim.mp4 -i infile.`+type+` -map 0 -map 1 -vcodec copy -acodec copy -c:s:0 copy -c:s mov_text Output.mp4`;
   let ArrayofInstructions = SubtitleCommand.split(' ');
   await ffmpeg.run(...ArrayofInstructions);
 }
